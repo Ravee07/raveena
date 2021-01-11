@@ -1,0 +1,24 @@
+
+using System;
+class compiletimepoly
+{
+    void print(int a, int b)
+    {
+        Console.WriteLine( (a + b));
+    }
+    void print(string m, string n)
+    {
+       Console.WriteLine( (m + n));
+    }
+
+    static void Main(string[] args)
+    {
+        compiletimepoly c = new compiletimepoly();
+
+        c.print(5, 6);
+
+      
+        c.print("Hello", "World");
+        
+    }
+}

@@ -1,0 +1,46 @@
+
+using System;
+public abstract class Vehicle
+{
+ public abstract void display1();
+}
+
+public class Bus : Vehicle
+{
+ public override void display1()
+  {
+   Console.WriteLine("Bus class");
+ }
+}
+
+public class Car : Vehicle
+{
+    public override void display1()
+    {
+     Console.WriteLine("Car class");
+    }
+}
+
+public class Motorcycle : Vehicle
+{
+ public override void display1()
+ {
+ Console.WriteLine("Motorcycle class");
+ }
+}
+
+public class MyClass
+{
+    public static void Main()
+    {
+
+ Vehicle v0 = new Bus();
+    v0.display1();
+
+Vehicle  v1= new Car();
+  v1.display1();
+
+ Vehicle v2 = new Motorcycle();
+  v2.display1();
+    }
+}

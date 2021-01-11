@@ -1,0 +1,38 @@
+using System;
+
+namespace ConsoleApp3
+{
+    public class Exception1
+    {
+        static int Division(int x, int y)
+        {
+            if (y == 0)
+            { throw new DivideByZeroException(); }
+            else
+            { return x / y; }
+        }
+
+        public static void Main()
+        {
+
+            int a = 98, b = 0;
+            int res;
+
+            try
+            {
+                res = Division(a, b);
+                Console.WriteLine("{0} divided by {1} = {2}", a, b, res);
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine(" divide by zero not poss." );
+            }
+            finally
+            {
+                Console.WriteLine(" finally ");
+
+            }
+
+        }
+    }
+}

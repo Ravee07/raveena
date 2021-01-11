@@ -1,0 +1,23 @@
+using System;
+
+class runtime
+{
+    public void print()
+    {
+        Console.WriteLine("parent class");
+    }
+}
+class b : runtime
+{
+    public void print()
+    {
+        Console.WriteLine("child class");
+    }
+
+    public static void Main(string[] args)
+    {
+        b b1 = new b();
+        b1.print();
+        Console.ReadLine();
+    }
+}

@@ -1,0 +1,42 @@
+USE [EmployeeDB]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_Update]    Script Date: 15-01-2021 12:18:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[SP_Update]
+(@Empid int,
+@EmpName nvarchar(50),
+@DeptName nvarchar(50),
+@DateOfBirth date,
+@DateOfJoining date,
+@Designation nvarchar(50),
+@Degree nvarchar(50),
+@PassOutYear int,
+@BankName nvarchar(50),
+@AccountNo nvarchar(50),
+@BasicSalary bigint,
+@HRA bigint,
+@OtherAllowances bigint,
+@PF bigint,
+@MedicalPremium bigint,
+@TDS bigint)
+as
+begin
+
+update  EmployeeTB set EmpName= @EmpName
+where Empid=@Empid;
+
+update  EmployeeDetailTB set DateOfBirth= @DateOfBirth , DateOfJoining = @DateOfJoining, Designation= @Designation, 
+Degree=@Degree,PassOutYear=@PassOutYear
+Where Empid=@Empid;
+
+update  BankDetailTB set BankName=@BankName, AccountNo=@AccountNo, BasicSalary= @BasicSalary,
+HRA=@HRA, OtherAllowances=@OtherAllowances, PF=@PF, MedicalPremium=@MedicalPremium,TDS=@TDS
+where Empid=@Empid;
+
+update  DepartmentTB set DepartmentTB.DeptName=@DeptName from DepartmentTB inner join  EmployeeTB
+on DepartmentTB.Deptid=EmployeeTB.Deptid;
+
+end 

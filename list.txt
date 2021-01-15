@@ -1,0 +1,16 @@
+USE [master]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_List]    Script Date: 15-01-2021 11:25:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER procedure [dbo].[SP_List]
+
+
+as
+begin
+ 
+ select * from EmployeeTB;
+ end

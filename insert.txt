@@ -1,0 +1,28 @@
+Create procedure SP_Insert
+--(@EmpName nvarchar(50),
+--@DeptName nvarchar(50),
+--@DateOfBirth date,
+--@DateOfJoining date,
+--@Designation nvarchar(50),
+--@Degree nvarchar(50),
+--@PassOutYear int,
+--@BankName nvarchar(50),
+--@AccountNo nvarchar(50),
+--@BasicSalary bigint,
+--@HRA bigint,
+--@OtherAllowances bigint,
+--@PF bigint,
+--@MedicalPremium bigint,
+--@TDS bigint)
+--as
+--begin
+
+--insert into EmployeeTB (EmpName) values(@EmpName);
+
+--insert into DepartmentTB (DeptName) values(@DeptName);
+  
+--insert into EmployeeDetailTB (DateOfBirth ,DateOfJoining ,Designation,Degree ,PassOutYear) values (@DateOfBirth ,@DateOfJoining ,@Designation,@Degree ,@PassOutYear);
+
+-- insert  into BankDetailTB (BankName ,AccountNo ,BasicSalary  ,HRA  , OtherAllowances ,PF ,MedicalPremium ,TDS )
+-- values (@BankName ,@AccountNo ,@BasicSalary ,@HRA ,@OtherAllowances ,@PF ,@MedicalPremium ,@TDS )
+--end

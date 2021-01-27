@@ -14,15 +14,15 @@
         <th> Designation</th>
         <th> Degree</th>
         <th> Passoutyear</th>
-
+        <th>NetSalary</th>
     </tr>
 
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
 <tr>
-    <td>
-        @*<a href="@Url.Action("Index", "Information", new { @id = @Model.Rows[i][0] })">*@ @Model.Rows[i][0]@*</a>*@
-    </td>
+    <!--<td>-->
+    @*<a href="@Url.Action("Index", "Information", new { @id = @Model.Rows[i][0] })">*@ <!--@Model.Rows[i][0]-->@*</a>*@
+    <!--</td>-->
     <td>@Model.Rows[i][0]</td>
     <td>@Model.Rows[i][1]</td>
     <td>@Model.Rows[i][2]</td>
@@ -30,9 +30,13 @@
     <td>@Model.Rows[i][4]</td>
     <td>@Model.Rows[i][5]</td>
     <td>@Model.Rows[i][6]</td>
-   
+    <td>@Model.Rows[i][7]</td>
+
+
 </tr>
 
     }
 </table>
-<a href=" @Url.Action("Create","newEmp")">Add Employee</a>
+<a href=" @Url.Action("CreateEmployeeDetail","EmpDetails")">Add Employee Details</a>
+<br />
+<a href=" @Url.Action("EditEmpDetail","EmpDetails")">Update Employee Details</a>

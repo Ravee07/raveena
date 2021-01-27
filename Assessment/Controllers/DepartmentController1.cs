@@ -41,6 +41,7 @@ namespace SampleProject.Controllers
        
         public ActionResult CreateDepartment(Department dept)
         {
+            DataTable dt = new DataTable();
             using (con)
             {
 
@@ -55,30 +56,40 @@ namespace SampleProject.Controllers
 
 
                 cmd.ExecuteNonQuery();
+                sda.Fill(dt);
             }
             return RedirectToAction("ListDepartment");
         }
 
-        // GET: DepartmentController1/Edit/5
-        public ActionResult Edit(int id)
+    
+        public ActionResult EditDept(int id)
         {
-            return View();
+            return View(  new Department ());
         }
 
-        // POST: DepartmentController1/Edit/5
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+     
+        public ActionResult EditDept(Department d)
         {
-            try
+            using (con)
             {
-                return RedirectToAction(nameof(Index));
+
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_EDITDEPT", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                //cmd.Parameters.AddWithValue("@Empid", ed.Empid);
+                cmd.Parameters.AddWithValue("@Deptid", d.Deptid);
+                cmd.Parameters.AddWithValue("@DeptName", d.DeptName);
+
+
+
+                cmd.ExecuteNonQuery();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("ListDepartment");
         }
+    
 
         // GET: DepartmentController1/Delete/5
         public ActionResult Delete(int id)

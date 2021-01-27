@@ -39,6 +39,7 @@ namespace SampleProject.Controllers
 
         public ActionResult Create(Employee emp, Department dept)
         {
+            DataTable dt = new DataTable();
             using (con)
             {
 
@@ -50,55 +51,74 @@ namespace SampleProject.Controllers
                 cmd.Parameters.AddWithValue("@Deptid", dept.Deptid);
                 cmd.Parameters.AddWithValue("@EmpName", emp.EmpName);
 
-
+    
               
                 cmd.ExecuteNonQuery();
+                sda.Fill(dt);
             }
             return RedirectToAction("ListEmployee");
         }
 
-        //// GET: newEmpController/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
+        //public ActionResult select()
+        //{ }
 
-        //// POST: newEmpController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
 
-        //// GET: newEmpController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
 
-        //// POST: newEmpController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        // }
 
+        [HttpGet]
+        public ActionResult EditEmployee()
+        {
+            return View(new Employee());
+        }
+
+
+            [HttpPost]
+
+            public ActionResult EditEmployee(Employee e)
+        {
+            DataTable dt = new DataTable();
+            using (con)
+                {
+
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SP_EDITEMP", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                   
+                    cmd.Parameters.AddWithValue("@Deptid", e.Deptid);
+                    cmd.Parameters.AddWithValue("@EmpName", e.EmpName);
+
+            
+
+                    cmd.ExecuteNonQuery();
+                sda.Fill(dt);
+            }
+                return RedirectToAction("ListEmployee");
+            }
+
+
+            //// GET: newEmpController/Delete/5
+            //public ActionResult Delete(int id)
+            //{
+            //    return View();
+            //}
+
+            //// POST: newEmpController/Delete/5
+            //[HttpPost]
+            //[ValidateAntiForgeryToken]
+            //public ActionResult Delete(int id, IFormCollection collection)
+            //{
+            //    try
+            //    {
+            //        return RedirectToAction(nameof(Index));
+            //    }
+            //    catch
+            //    {
+            //        return View();
+            //    }
+
+            // }
+        
 
     }
 }

@@ -8,9 +8,9 @@ namespace SampleProject.Models
     public class EmployeeDetail
     {
         public int EmpDetailId { get; set; }
-        public int DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
          
-        public int DateOfJoining { get; set; }
+        public DateTime DateOfJoining { get; set; }
         
         public string Designation { get; set; }
          

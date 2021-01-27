@@ -1,7 +1,8 @@
 ﻿List of Employees
 
 @model System.Data.DataTable
-@{
+{
+
     ViewBag.Title = "ListDepartment";
 
 }
@@ -25,3 +26,6 @@
     }
 </table>
 <a href=" @Url.Action("CreateDepartment","Departmentcontroller1")">Add Department</a>
+<br />
+
+<a href=" @Url.Action("EditDept","Departmentcontroller1")">Edit Department</a>

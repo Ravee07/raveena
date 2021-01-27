@@ -30,9 +30,43 @@ namespace SampleProject.Controllers
             }
             return View(dt);
         }
+        [HttpGet]
+        //public ActionResult ParticularEmp(int id)
+        //{
+        //    DataTable dt = new DataTable();
+        //    using (con)
+        //    {
+        //        con.Open();
+        //        SqlCommand cmd = new SqlCommand("Particular", con);
+        //        cmd.Parameters.AddWithValue("Empid", id);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        SqlDataAdapter sda = new SqlDataAdapter(cmd);
+        //        sda.Fill(dt);
+
+        //    }
+        //    return View();
+        //}
+
+
+        //public ActionResult NETSAL()
+        //{
+        //    using (con)
+        //    {
+
+        //        con.Open();
+        //        SqlCommand cmd = new SqlCommand("SP_CreateEmpDetail", con);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+
+
+        //        return View();
+        // }
+
+
 
         // GET: EmpDetailsController/Details/5
-      
+
 
         // GET: EmpDetailsController/Create
         public ActionResult CreateEmployeeDetail()
@@ -42,57 +76,73 @@ namespace SampleProject.Controllers
 
         // POST: EmpDetailsController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        //public ActionResult CreateEmployeeDetail(EmployeeDetail ed)
-        //{
-        //    using (con)
-        //    {
 
-        //        con.Open();
-        //        SqlCommand cmd = new SqlCommand("SP_CreateEmpDetail", con);
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        SqlDataAdapter sda = new SqlDataAdapter(cmd);
-               
-        //        cmd.Parameters.AddWithValue("Empid", ed.Empid);
-        //        cmd.Parameters.AddWithValue("@DateOfBirth", ed.DateOfBirth);
-        //        cmd.Parameters.AddWithValue("@DateOfJoining", ed.DateOfJoining);
-        //        cmd.Parameters.AddWithValue("@Designation", ed.Designation);
-        //        cmd.Parameters.AddWithValue("@Degree", ed.Degree);
-        //        cmd.Parameters.AddWithValue("@PassOutYear", ed.PassOutYear);
-
-
-        //        cmd.ExecuteNonQuery();
-        //    }
-        //    return RedirectToAction("ListEmployee");
-        //}
-
-        
-        
-        
-        
-        
-        
-        
-        
-        // GET: EmpDetailsController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult CreateEmployeeDetail(EmployeeDetail ed)
         {
-            return View();
+            DataTable dt = new DataTable();
+            using (con)
+            {
+
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_CreateEmpDetail", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                cmd.Parameters.AddWithValue("Empid", ed.Empid);
+                cmd.Parameters.AddWithValue("@DateOfBirth", ed.DateOfBirth);
+                cmd.Parameters.AddWithValue("@DateOfJoining", ed.DateOfJoining);
+                cmd.Parameters.AddWithValue("@Designation", ed.Designation);
+                cmd.Parameters.AddWithValue("@Degree", ed.Degree);
+                cmd.Parameters.AddWithValue("@PassOutYear", ed.PassOutYear);
+               
+
+                cmd.ExecuteNonQuery();
+                sda.Fill(dt);
+
+            }
+            return RedirectToAction("ListEmployeeDetails");
+        }
+
+
+
+
+
+
+
+
+
+       
+        public ActionResult EditEMpDetail(int id)
+        {
+            return View(new EmployeeDetail());
         }
 
         // POST: EmpDetailsController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+      
+        public ActionResult EditEmpDetail(EmployeeDetail ed)
         {
-            try
+            DataTable dt = new DataTable();
+            using (con)
             {
-                return RedirectToAction(nameof(Index));
+
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_EditEmpDetails", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+
+                cmd.Parameters.AddWithValue("Empid", ed.Empid);
+                cmd.Parameters.AddWithValue("@DateOfBirth", ed.DateOfBirth);
+                cmd.Parameters.AddWithValue("@DateOfJoining", ed.DateOfJoining);
+                cmd.Parameters.AddWithValue("@Designation", ed.Designation);
+                cmd.Parameters.AddWithValue("@Degree", ed.Degree);
+                cmd.Parameters.AddWithValue("@PassOutYear", ed.PassOutYear);
+
+               
+                cmd.ExecuteNonQuery();
+                sda.Fill(dt);
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("ListEmployeeDetails");
         }
 
         // GET: EmpDetailsController/Delete/5

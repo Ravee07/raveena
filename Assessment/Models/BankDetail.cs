@@ -10,21 +10,21 @@ namespace SampleProject.Models
 
          public int Bankid { get; set; }
         public string BankName { get; set; }
-        public int AccountNo { get; set; }
+        public long AccountNo { get; set; }
          
-         public int BasicSalary { get; set; }
-        public int HRA { get; set; }
-        public int OtherAllowances { get; set; }
+         public long BasicSalary { get; set; }
+        public long HRA { get; set; }
+        public long OtherAllowances { get; set; }
 
-        public int GrossSalary{ get; set; }
+        public long GrossSalary { get; set; }
 
-        public int PF { get; set; }
-        public int MedicalPremium{ get; set; }
-        public int TDS { get; set; }
+        public long PF { get; set; }
+        public long MedicalPremium { get; set; }
+        public long TDS { get; set; }
 
-         public int NetSalary { get; set; }
+         public long NetSalary { get; set; }
 
-        public int Empidid { get; set; }
+        public int Empid { get; set; }
 
     }
 }

@@ -16,12 +16,18 @@
     {
         <tr>
             <td>
-                @*<a href="@Url.Action("Index", "Information", new { @id = @Model.Rows[i][0] })">*@ @Model.Rows[i][0]@*</a>*@
+                <a href="@Url.Action("ListEmployeeDetails", "EmpDetails", new { @id = @Model.Rows[i][0] })"> @Model.Rows[i][0]</a>
             </td>
             <td>@Model.Rows[i][1]</td>
             <td>@Model.Rows[i][2]</td>
+            <td>
+                <a href="@Url.Action("SelectEmp", "newEmp")">update </a> 
+
+            </td>
         </tr>
 
     }
 </table>
 <a href=" @Url.Action("Create","newEmp")">Add Employee</a>
+<br />
+<a href=" @Url.Action("EditEmployee","newEmp")"> Update Employee</a>

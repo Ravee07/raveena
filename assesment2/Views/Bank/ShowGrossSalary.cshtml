@@ -1,0 +1,34 @@
+﻿List of Employees
+
+@model System.Data.DataTable
+@{
+    ViewBag.Title = "ShowGrossSalary";
+
+}
+<table class="table table-bordered table-striped">
+    <tr>
+        <th> EmpName</th>
+        <th> BasicSalary</th>
+        <th> HRA</th>
+        <th> TDS</th>
+        
+        <th>GrossSalary</th>
+    </tr>
+
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+          
+
+
+        </tr>
+
+    }
+</table>
+<br />
+<a href=" @Url.Action("ListEmployeeDetails","EmpDetails")"> BACK_TO_EMPLOYEE_DETAILS</a>

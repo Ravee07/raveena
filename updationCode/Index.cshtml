@@ -1,0 +1,28 @@
+﻿@model sammple.Models.Department
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> DropdownList </title>
+</head>
+<body>
+    <div>
+        <label></label> for="EmployeeName">EmployeeName:<br />
+        <input type="text" id="EmpName" name="empname" />
+
+    </div>
+    <div>
+        Department: @Html.DropDownListFor(m => m.Deptid, new SelectList(Model.Departments, "Deptid", "DeptName"), "Select  department");
+
+    </div>
+    <div>
+        <input type ="submit"  id="b1" name="Submit"/>
+    </div>
+</body>
+</html>

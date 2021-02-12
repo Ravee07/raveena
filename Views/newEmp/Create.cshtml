@@ -1,0 +1,105 @@
+﻿
+@model SampleProject.Models.Employee
+
+
+
+<h4>Create Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="EmpName" class="control-label"></label>
+                <input asp-for="EmpName" class="form-control" />
+                <span asp-validation-for="EmpName" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label asp-for="DeptName" class="control-lable"></label>
+                <select asp-for="DeptName" asp-items="ViewBag.Department" class="custom-select">
+                    <option value="">Choose Department</option>
+                </select>
+            </div>
+
+            @*<div class="form-group">
+            <label asp-for="Deptid" class="control-label"></label>
+            <input asp-for="Deptid" class="form-control" />
+            <span asp-validation-for="Deptid" class="text-danger"></span>
+        </div>*@
+
+
+
+
+
+
+
+            @*<div>
+            <asp:DropDownList ID="DddlDepartment" runat="server">
+            </asp:DropDownList>
+
+        </div>*@
+
+
+            @*@
+            {
+            ViewBag.Title = "Create";
+            }
+
+
+
+        <center>
+            @Html.DropDownList("Department")
+        </center>*@
+
+            @*@{ ViewBag.Title = "Create"; }
+        <div class="form-group">
+            <label asp-for="DeptName" class="control-label"></label>
+
+            <span asp-validation-for="DeptName" class="text-danger"></span>
+            @Html.DropDownList("Department")
+        </div>*@
+
+
+            @*"--select State --", new { class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DeptName, "", new { @class = "text-danger" })*@
+
+
+
+            @*<center>
+            @Html.DropDownList("Department")
+        </center>*@
+
+
+            @*@Html.DropDownList("Departments", (IEnumerable<SelectListItem>)ViewBag.Department, new { id = "", @class = "form-control" })*@
+
+
+
+            <div class="form-group">
+                <input type="submit" value="CreateEmployee" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ListEmployee">Back to List</a>
+</div>
+
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $(document).ready(function ()
+    {
+        $("#DeptName").change( function () {
+            var ddtext = $("#Deptid option:selected").text();
+            $("#hidden1").val(ddtext);
+
+        })
+        </script>*@

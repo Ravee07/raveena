@@ -1,0 +1,72 @@
+﻿@using System.Data
+    @model DataSet
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+        <br />
+        <h2>
+            <a href="@Url.Action("CreateQuestion","Question")"> Add Question</a>
+        </h2>
+        <br />
+        <br />
+
+
+
+        <table cellpadding="2" cellspacing="2"
+               style="font-family:Georgia, Garamond, Serif; color:black; font-style:italic; font-size:24px" class="table table-hover table-condensed table-bordered">
+            <tr>
+                <th>Id</th>
+                <th>Quetions</th>
+                <th>Answer</th>
+            </tr>
+            @foreach (DataRow row in Model.Tables[0].Rows)
+            {
+                <tr>
+                    <td>
+                    <a href="@Url.Action("info","User",new { @id=row["queId"]})">
+                        
+                        @row["queId"]</td>
+                    <td>@row["question"]</td>
+
+                    <td>@row["answer"]</td>
+                    <td><a href="@Url.Action("AddAnswer","Answer",new { @id=row["queId"]})">Add Answer</a></td>
+
+                    @*<td>
+                        <a Html.ActionLink("AddAnswer","Answer", new { id=Model.queid })>>AddAanswer</a>
+                    </td>*@
+
+
+                    @*<td><a href="@Url.Action("AddAnswer","Answer")">Add Answer</a></td>*@
+
+
+
+
+                </tr>
+
+            }
+        </table>
+        <br />
+
+        <br />
+
+        <h2><a href="@Url.Action("logout","User")">LOGOUT</a></h2>
+
+    </body>
+    </html>
+
+
+

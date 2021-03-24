@@ -1,0 +1,51 @@
+﻿
+@using System.Data
+@model DataSet
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+
+    <br />
+
+    @*<a href="@Url.Action("CreateQuestion","Question")"> Add Question</a>-->*@
+
+    <br />
+    <br />
+
+
+    <table cellpadding="2" cellspacing="3"
+           style="font-family:Georgia, Garamond, Serif;color:black;font-style:italic; font-size:30px">
+
+        <tr>
+            <th>Id</th>
+            <th>Questions</th>
+            <th>Answers</th>
+
+        </tr>
+        @foreach (DataRow row in Model.Tables[0].Rows)
+        {
+    <tr>
+        <td>@row["queId"]</td>
+        <td>@row["question"]</td>
+        <td>@row["answer"]</td>
+
+    </tr>
+        }
+    </table>
+    <br />
+
+    <br />
+
+    <a href="@Url.Action("LOGIN","User")">LOGIN HERE</a>
+
+</body>
+</html>

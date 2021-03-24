@@ -1,0 +1,44 @@
+﻿@using System.Data
+@model DataSet
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+
+    <table cellpadding="2" cellspacing="2"
+           style="font-family:Georgia, Garamond, Serif; color:black; font-style:italic; font-size:24px" class="table table-hover table-condensed table-bordered">
+        <tr>
+            <th>Questions</th>
+            <th>Createdby</th>
+            <th>Createdon</th>
+            <th>Answers</th>
+            <th>Answeredby</th>
+            <th>Answereddby</th>
+
+        </tr>
+        @foreach (DataRow row in Model.Tables[0].Rows)
+        {
+            <tr>
+
+                <td>@row["question"]</td>
+                <td>@row["createdby"]</td>
+                <td>@row["createdon"]</td>
+                <td>@row["answer"]</td>
+                <td>@row["createby"]</td>
+                <td>@row["createby"]</td>
+            </tr>
+        }
+    </table>
+    <hr />
+
+</body>
+</html>
